@@ -1,50 +1,48 @@
 <?php
 include_once "/controllers/database_controller.php";
+include_once "/controllers/bandas_controller.php";
+include_once "/controllers/generos_controller.php";
+include_once "/controllers/banda.php";
+include_once "/controllers/genero.php";
 
 class AdminBandas {
 	function handleRequest($mensaje) {
-	
-		if(isset ($mensaje['columna']) && isset ($mensaje['fila'])&& isset ($mensaje['sector'])&& isset ($mensaje['sector'])){
-			$entrada = new Entrada($mensaje["columna"],$mensaje["fila"],$mensaje["sector"],$mensaje["recital"]);
-		}
+		$bandasManager = new Bandas_Controller();
+		$generosManager = new Generos_Controller();
+		if(isset($mensaje["borrar"]) && isset($mensaje["id_banda"])){
+			$banda = new Banda();
+			$banda->id = $mensaje["id_banda"];
+			$banda->delete_banda();
 		
-		if(isset($mensaje["alta"])){
-			
-			
-			
-			/*
-			if($entrada->estado == 0){
-				$db = new Database();
-				$recital = new Recital($entrada->recital);
-				$queryString = "SELECT * FROM descuentos";
-				$descuentos = $db->consultaSelect($queryString);
-				$sector = new Sector($entrada->sector);
-				require "views/form_descuentos.php";
+		}elseif (isset($mensaje["crear_banda"])){
+			//print_r($mensaje);
+			if($mensaje["nombre"]==NULL){
+				echo ("Nombre no debe ser nulo");
 			}else{
-				require "views/form_anular.php";
-			}
-			*/
-		}elseif (isset($mensaje["baja"])){
-			/*
-			if($entrada->estado == 0){
-				if(isset($mensaje["descuentos"])){
-					$entrada->agregar_descuentos($mensaje["descuentos"]);
-				}
-				require "views/form_confirmar_compra.php";
-			}else{
-				require "views/form_anular.php";
-			}*/
+				$banda = new Banda();
+				$banda->nombre = $mensaje["nombre"];
+				$banda->genero = new Genero();
+				$banda->genero->id = $mensaje["genero"];
+				$banda->create_banda();
+			}		
 		}elseif (isset($mensaje["modificacion"])){
-			/*if($entrada->estado == 0){
-				$entrada->set_estado(1);
-				require "views/form_enviar_impresora.php";
-			}else{
-				require "views/form_anular.php";
-			}*/
+		}else{
 		}
-		//MOSTRAR LISTADO
-		//require "views/admin_bandas/form_listado_bandas.php"
-		
+		echo "<table border=0 width=50% height=20%>";
+		echo "
+		<tr>
+			<th>Banda</th>
+			<th>Genero</th>
+		</tr>
+		";
+		$bandas = $bandasManager->getAll();
+		$generos = $generosManager->getAll();
+				require "views/admin_bandas/crear_bandas.php";
+		if($bandas!=NULL){
+			require "views/admin_bandas/listado_bandas.php";
+		}
+
+		echo "</table>";
 	}
 } 
 ?>
