@@ -85,8 +85,9 @@ class AdminEntradas {
 		}else{
 			//Seleccion del festival
 			$festivales = $festivales_controller->get_all();
-			require "views/admin_entradas/form_festivales.php";
+			require "views/form_festivales.php";
 		}
+		echo '<input type="hidden" name="adminEntradas" value=""\>';
 	}
 } 
 ?>

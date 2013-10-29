@@ -5,7 +5,7 @@ class Bandas_Controller {
 		$query = "
 			SELECT 
 				b.nombre as nombre_banda, 
-				b.id_banda, 
+				b.id_banda as id, 
 				b.genero,
 				g.nombre as nombre_genero 
 			FROM bandas b , generos g 
@@ -15,6 +15,7 @@ class Bandas_Controller {
 		$result = Database::getInstance()->consultaSelect($query);
 		return $result;
 	}
+
 	
 }
 ?>

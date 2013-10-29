@@ -12,7 +12,6 @@
 		</select><br/>
 	</td>
 	<td>
-		<input type="hidden" name="adminBandas" value=""/>
 		<input type="submit" name="crear_banda" value="Crear">
 	</td>
 </tr>

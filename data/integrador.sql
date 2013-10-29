@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2013 a las 12:36:05
+-- Tiempo de generación: 29-10-2013 a las 21:02:42
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -33,14 +33,20 @@ CREATE TABLE IF NOT EXISTS `bandas` (
   PRIMARY KEY (`id_banda`),
   KEY `genero` (`genero`),
   KEY `genero_2` (`genero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `bandas`
 --
 
 INSERT INTO `bandas` (`id_banda`, `nombre`, `genero`) VALUES
-(1, 'los twist', 1);
+(15, 'banda2', 1),
+(16, 'banda23', 1),
+(17, 'banda', 1),
+(18, 'ba', 1),
+(21, 'banda232', 1),
+(25, 'bamda', 1),
+(26, 'ananna', 3);
 
 -- --------------------------------------------------------
 
@@ -52,12 +58,21 @@ CREATE TABLE IF NOT EXISTS `bandas_recitales` (
   `fecha_recital` date NOT NULL,
   `festival` int(11) NOT NULL,
   `id_banda` int(11) NOT NULL,
-  `hora_inicio` int(11) NOT NULL,
-  `hora_fin` int(11) NOT NULL,
+  `orden` int(11) NOT NULL,
   PRIMARY KEY (`fecha_recital`,`festival`,`id_banda`),
   KEY `festival` (`festival`),
   KEY `id_banda` (`id_banda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `bandas_recitales`
+--
+
+INSERT INTO `bandas_recitales` (`fecha_recital`, `festival`, `id_banda`, `orden`) VALUES
+('2013-07-16', 1, 16, 0),
+('2013-07-16', 1, 18, 0),
+('2013-07-16', 1, 26, 0),
+('2013-07-18', 1, 17, 0);
 
 -- --------------------------------------------------------
 
@@ -111,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `entradas` (
 --
 
 INSERT INTO `entradas` (`numero`, `estado`, `fila`, `columna`, `fecha_alta`, `sector`, `recital`, `festival`) VALUES
-(NULL, 0, 1, 1, '2013-10-22 18:06:53', 'A', '2013-07-16', 1),
+(NULL, 0, 1, 1, '2013-10-29 17:25:17', 'A', '2013-07-16', 1),
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'A', '2013-07-16', 2),
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'A', '2013-07-18', 1),
 (NULL, 0, 1, 1, '2013-09-14 20:00:28', 'A', '2013-07-18', 2),
@@ -120,7 +135,7 @@ INSERT INTO `entradas` (`numero`, `estado`, `fila`, `columna`, `fecha_alta`, `se
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'B', '2013-07-18', 1),
 (NULL, 0, 1, 1, '2013-09-14 20:00:28', 'B', '2013-07-18', 2),
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'C', '2013-07-16', 1),
-(NULL, 0, 1, 1, '2013-10-22 18:01:46', 'C', '2013-07-16', 2),
+(NULL, 1, 1, 1, '2013-10-22 18:01:46', 'C', '2013-07-16', 2),
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'C', '2013-07-18', 1),
 (NULL, 0, 1, 1, '2013-09-14 20:00:28', 'C', '2013-07-18', 2),
 (NULL, 0, 1, 1, '2013-09-14 20:00:27', 'D', '2013-07-16', 1),
@@ -3719,6 +3734,15 @@ CREATE TABLE IF NOT EXISTS `entradas_has_descuentos` (
   KEY `fk_Entradas_has_Descuentos_Entradas1` (`Entradas_columna`,`Entradas_fila`,`Entradas_sector`,`Entradas_recital`,`Entradas_festival`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `entradas_has_descuentos`
+--
+
+INSERT INTO `entradas_has_descuentos` (`Entradas_columna`, `Entradas_fila`, `Entradas_sector`, `Entradas_recital`, `Descuentos_id_descuento`, `Entradas_festival`) VALUES
+(1, 1, 'C', '2013-07-16', 1, 2),
+(1, 1, 'C', '2013-07-16', 2, 2);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `festivales`
@@ -3771,6 +3795,7 @@ CREATE TABLE IF NOT EXISTS `recitales` (
   `fecha` date NOT NULL,
   `precioBase` varchar(45) NOT NULL,
   `festival` int(11) NOT NULL,
+  `horaInicio` int(11) NOT NULL DEFAULT '2200',
   PRIMARY KEY (`fecha`,`festival`),
   KEY `festival` (`festival`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -3779,10 +3804,10 @@ CREATE TABLE IF NOT EXISTS `recitales` (
 -- Volcado de datos para la tabla `recitales`
 --
 
-INSERT INTO `recitales` (`fecha`, `precioBase`, `festival`) VALUES
-('2013-07-16', '200', 1),
-('2013-07-16', '200', 2),
-('2013-07-18', '300', 1);
+INSERT INTO `recitales` (`fecha`, `precioBase`, `festival`, `horaInicio`) VALUES
+('2013-07-16', '200', 1, 2200),
+('2013-07-16', '200', 2, 2200),
+('2013-07-18', '300', 1, 2200);
 
 -- --------------------------------------------------------
 
