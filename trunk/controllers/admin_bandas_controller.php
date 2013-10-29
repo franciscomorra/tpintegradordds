@@ -26,8 +26,9 @@ class AdminBandas {
 				$banda->create_banda();
 			}		
 		}elseif (isset($mensaje["modificacion"])){
-		}else{
+		
 		}
+		//De cualquier manera, imprimi la tabla
 		echo "<table border=0 width=50% height=20%>";
 		echo "
 		<tr>
@@ -43,6 +44,8 @@ class AdminBandas {
 		}
 
 		echo "</table>";
+		echo '<input type="hidden" name="adminBandas" value=""/>';
 	}
+
 } 
 ?>

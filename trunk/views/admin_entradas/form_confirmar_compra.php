@@ -5,7 +5,6 @@
 <input type="hidden" name="columna" value="<?php echo $mensaje["columna"];?>"\>
 <input type="hidden" name="precioBaserecital" value="<?php echo $mensaje["precioBaserecital"];?>"\>
 <input type="hidden" name="precio_agregadoSector" value="<?php echo $mensaje["precio_agregadoSector"];?>"\>
-<input type="hidden" name="adminEntradas" value=""\>
 <div>Verifique el pago de la entrada</div>
 <?php
 	$date = new DateTime($mensaje["recital"]); 

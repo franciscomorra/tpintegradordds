@@ -15,6 +15,5 @@
     }
 ?>
 <input type="submit" name="enviar_descuentos" value="Confirmar!">
-<input type="hidden" name="adminEntradas" value=""\>
 
 

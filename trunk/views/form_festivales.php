@@ -6,5 +6,4 @@
 }
 ?>
 </select><br/>
-<input type="hidden" name="adminEntradas" value=""\>
 <input type="submit" name="consultar_festival" value="Seleccionar">
