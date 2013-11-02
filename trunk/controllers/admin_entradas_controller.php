@@ -1,5 +1,5 @@
 <?php
-//include_once "functions.php";
+
 include_once "/controllers/database_controller.php";
 include_once "/controllers/entradas_controller.php";
 include_once "/controllers/entrada.php";
@@ -8,11 +8,17 @@ include_once "/controllers/sector.php";
 include_once "/controllers/recitales_controller.php";
 include_once "/controllers/recital.php";
 include_once "/controllers/festivales_controller.php";
-include_once "/controllers/festival.php";
 
 class AdminEntradas {
+
+    protected $entityManager;
+
+    function __construct($entityManager){
+        $this->entityManager = $entityManager;
+    }
+
 	function handleRequest($mensaje) {
-		$festivales_controller = new Festivales_Controller();
+		$festivales_controller = new Festivales_Controller($this->entityManager);
 		$recitales_controller = new Recitales_Controller();
 		$entradas_controller = new Entradas_Controller();
 		$sectores_controller = new Sectores_Controller();
@@ -32,14 +38,14 @@ class AdminEntradas {
 				$descuentos = Database::getInstance()->consultaSelect($queryString);
 				$sector = new Sector($entrada->sector);
 				$recital = new Recital($entrada->recital,$entrada->festival);
-				$festival = new Festival($entrada->festival);
+				$festival = $festivales_controller->getById($entrada->festival);
 				require "views/admin_entradas/form_descuentos.php";
 			}else{
 				require "views/admin_entradas/form_anular.php";
 			}
 		}elseif (isset($mensaje["enviar_descuentos"])){
 			//Ya ingresaron los descuentos, muestro el resumen final, para que el cajero le cobre al cliente
-			$festival = new Festival($mensaje["festival"]);
+			$festival =  $festivales_controller->getById($mensaje["festival"]);
 			if($entrada->estado == 0){
 				if(isset($mensaje["descuentos"])){
 					$entradas_controller->agregar_descuentos($mensaje["descuentos"],$entrada);
@@ -71,15 +77,15 @@ class AdminEntradas {
 			//Seleccion de fila y columna, requiere sector, recital y festival
 			$sector = new Sector($mensaje["sector"]);
 			$recital = new Recital($mensaje["recital"],$mensaje["festival"]);
-			$festival = new Festival($recital->festival);
+			$festival =  $festivales_controller->getById($recital->festival);
 			$cantidad_filas = $sector->cantidad_filas;
 			$cantidad_columnas = $sector->cantidad_columnas;
 			$entradas = $entradas_controller->get_all($sector->nombre,$recital->festival,$recital->fecha);
 			require "views/admin_entradas/form_fila_col.php";
 		}elseif (isset($mensaje["consultar_festival"])){
 			//Seleccion de sector y recital, requiere festival en el POST
-			$festival = new Festival($mensaje["festival"]);
-			$recitales = $recitales_controller->get_all($festival->id_festival);
+			$festival =  $festivales_controller->getById($mensaje["festival"]);
+			$recitales = $recitales_controller->get_all($festival->getId());
 			$sectores = $sectores_controller->get_all();
 			require "views/admin_entradas/form_fecha_sector.php";
 		}else{

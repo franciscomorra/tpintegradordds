@@ -1,5 +1,5 @@
 
-<div>Festival <?php echo $festival->nombre;?></div>
+<div>Festival <?php echo $festival->getNombre();?></div>
 
 <div>Seleccione Fecha</div>
 <select name="recital">

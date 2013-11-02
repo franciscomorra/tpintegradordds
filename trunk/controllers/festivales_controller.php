@@ -1,11 +1,19 @@
 <?php
+
 class Festivales_Controller {
-	function __construct(){
-	}
+
+    protected $productRepository;
+    protected $entityManager;
+
+	function __construct($entityManager){
+        $this->entityManager = $entityManager;
+        $this->productRepository = $entityManager->getRepository('Festival');
+    }
 	function get_all(){
-		$queryString = "SELECT * FROM festivales";
-		$festivales = Database::getInstance()->consultaSelect($queryString);
-		return $festivales;
+        return $this->productRepository->findAll();
 	}
+
+    function getById($id){
+        return $this->entityManager->find('Festival',$id);
+    }
 }
-?>
