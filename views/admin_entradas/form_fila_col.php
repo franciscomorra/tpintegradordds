@@ -1,6 +1,6 @@
 <div>
 Seleccione ubicacion para el festival 
-<?php echo $festival->nombre; ?>, 
+<?php echo $festival->getNombre(); ?>,
 recital de la fecha 
 <?php echo $recital->fecha; ?>, 
 sector <?php echo $sector->nombre;?> (<?php echo $sector->color;?>)

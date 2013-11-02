@@ -10,7 +10,7 @@
 	$date = new DateTime($mensaje["recital"]); 
 	$fecha_modificada = $date->format('d-m-Y');
 ?>
-<div>Festival : <?php echo $festival->nombre;?></div>
+<div>Festival : <?php echo $festival->getNombre();?></div>
 <div>Fecha : <?php echo $fecha_modificada;?></div>
 <div>Sector : <?php echo $mensaje["sector"];?></div>
 <div>Fila : <?php echo $mensaje["fila"];?></div>

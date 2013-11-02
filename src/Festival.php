@@ -3,7 +3,7 @@
 /**
  * @Entity @Table(name="festivales")
  **/
-class Product
+class Festival
 {
     /** @Id @Column(type="integer") @GeneratedValue **/
     protected $id;
