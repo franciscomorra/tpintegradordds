@@ -18,4 +18,3 @@ class Bandas_Controller {
 
 	
 }
-?>

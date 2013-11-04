@@ -6,7 +6,7 @@
 class Festival
 {
     /** @Id @Column(type="integer") @GeneratedValue **/
-    protected $id;
+    protected $id_festival;
     /** @Column(type="string") **/
     protected $nombre;
 
@@ -31,7 +31,7 @@ class Festival
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id_festival = $id;
     }
 
     /**
@@ -39,7 +39,7 @@ class Festival
      */
     public function getId()
     {
-        return $this->id;
+        return $this->id_festival;
     }
 
 }

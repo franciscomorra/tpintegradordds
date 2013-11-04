@@ -39,7 +39,7 @@ $db->mysqli->autocommit(FALSE);
 								CURRENT_TIMESTAMP ,
 								'".$sector["nombre"]."',
 								'".$recital["fecha"]."',
-								'".$festival["id_festival"]."'
+								'".$festival->getId()."'
 								);
 						";
 						

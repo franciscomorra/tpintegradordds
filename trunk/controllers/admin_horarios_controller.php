@@ -1,6 +1,6 @@
 <?php
 //include_once "functions.php";
-include_once "/controllers/database_controller.php";
+include_once "controllers/database_controller.php";
 
 class AdminHorarios {
 

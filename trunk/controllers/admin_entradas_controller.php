@@ -1,13 +1,13 @@
 <?php
 
-include_once "/controllers/database_controller.php";
-include_once "/controllers/entradas_controller.php";
-include_once "/controllers/entrada.php";
-include_once "/controllers/sectores_controller.php";
-include_once "/controllers/sector.php";
-include_once "/controllers/recitales_controller.php";
-include_once "/controllers/recital.php";
-include_once "/controllers/festivales_controller.php";
+include_once "controllers/database_controller.php";
+include_once "controllers/entradas_controller.php";
+include_once "controllers/entrada.php";
+include_once "controllers/sectores_controller.php";
+include_once "controllers/sector.php";
+include_once "controllers/recitales_controller.php";
+include_once "controllers/recital.php";
+include_once "controllers/festivales_controller.php";
 
 class AdminEntradas {
 
