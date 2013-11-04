@@ -1,9 +1,9 @@
 <?php
-include_once "/controllers/database_controller.php";
-include_once "/controllers/bandas_controller.php";
-include_once "/controllers/generos_controller.php";
-include_once "/controllers/banda.php";
-include_once "/controllers/genero.php";
+include_once "controllers/database_controller.php";
+include_once "controllers/bandas_controller.php";
+include_once "controllers/generos_controller.php";
+include_once "controllers/banda.php";
+include_once "controllers/genero.php";
 
 class AdminBandas {
 	function handleRequest($mensaje) {

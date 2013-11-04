@@ -2,7 +2,7 @@
 <select name="festival">
 <?php
 	foreach ($festivales as $festival) {
-	echo "<option value=\"".$festival["id_festival"]."\">".$festival["nombre"]."</option>";
+	echo "<option value=\"".$festival->getId()."\">".$festival->getNombre()."</option>";
 }
 ?>
 </select><br/>

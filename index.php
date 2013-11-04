@@ -2,10 +2,10 @@
 <body>
 <form action="" method="POST">
 <?php
-include_once("../bootstrap.php");
-include_once "/controllers/admin_entradas_controller.php";
-include_once "/controllers/admin_bandas_controller.php";
-include_once "/controllers/admin_horarios_controller.php";
+include_once("bootstrap.php");
+include_once "controllers/admin_entradas_controller.php";
+include_once "controllers/admin_bandas_controller.php";
+include_once "controllers/admin_horarios_controller.php";
 include_once "funcionesEspeciales.php";
 //vaciar_todo(); //Resetea todas las compras de entradas
 //borrar_descuentos_vacios();
@@ -21,7 +21,7 @@ if (isset($_POST["adminEntradas"])){
 	$admin = new AdminHorarios($entityManager);
 	$admin->handleRequest($_POST);
 }else{
-	include_once "/views/mainview.php";
+	include_once "views/mainview.php";
 }
 ?>
 </form>
