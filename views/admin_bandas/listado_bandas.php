@@ -1,13 +1,14 @@
 <?php
-	foreach ($bandas as $item)
+	foreach ($bandas as $banda)
 	{
 ?>
 	<tr>
-		<td><?php echo $item["nombre_banda"];?></td>
-		<td><?php echo $item["nombre_genero"];?></td>
+		<td><?php echo $banda["nombre_banda"];?></td>
+		<td><?php echo $banda["nombre_genero"];?></td>
 		<td>
 			<input type="submit" name="borrar" value="Borrar"/>
-			<input type="hidden" name="id_banda" value="<?php echo $item["id_banda"];?>"/>
+			<input type="hidden" name="id_banda" value="<?php echo $banda["id"];?>"/>
+			
 		</td>
 	</tr>
 
