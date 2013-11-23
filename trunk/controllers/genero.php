@@ -8,8 +8,8 @@ class Genero {
 		if($id!=NULL){
 			$this->id = $id;
 			$queryString = "SELECT * FROM generos WHERE `id` = '".$this->id."'";
-			$datosConsulta = Database::getInstance()->consultaSelect($queryString)[0];
-			$this->nombre = $datosConsulta["nombre"];
+			$datosConsulta = Database::getInstance()->consultaSelect($queryString);
+			$this->nombre = $datosConsulta[0]["nombre"];
 		}
 		*/
 	}

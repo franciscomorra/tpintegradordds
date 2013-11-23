@@ -10,11 +10,11 @@ class Sector {
 		$this->nombre = $nombre;
 		
 		$queryString = "SELECT * FROM sectores WHERE `nombre` = '".$this->nombre."'";
-		$datosConsulta = Database::getInstance()->consultaSelect($queryString)[0];
-		$this->color = $datosConsulta["color"];
-		$this->precio_agregado = $datosConsulta["precio_agregado"];
-		$this->cantidad_filas = $datosConsulta["cantidad_filas"];
-		$this->cantidad_columnas = $datosConsulta["cantidad_columnas"];
+		$datosConsulta = Database::getInstance()->consultaSelect($queryString);
+		$this->color = $datosConsulta[0]["color"];
+		$this->precio_agregado = $datosConsulta[0]["precio_agregado"];
+		$this->cantidad_filas = $datosConsulta[0]["cantidad_filas"];
+		$this->cantidad_columnas = $datosConsulta[0]["cantidad_columnas"];
 
 	}
 }

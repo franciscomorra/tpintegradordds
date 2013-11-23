@@ -17,9 +17,9 @@ class Entrada {
 				`recital` = \"".$recital."\" AND
 				`festival` = \"".$festival."\" 
 		";
-		$datosConsulta = Database::getInstance()->consultaSelect($queryString)[0];
-		$this->estado = $datosConsulta["estado"];
-		$this->fecha_alta = $datosConsulta["fecha_alta"];
+		$datosConsulta = Database::getInstance()->consultaSelect($queryString);
+		$this->estado = $datosConsulta[0]["estado"];
+		$this->fecha_alta = $datosConsulta[0]["fecha_alta"];
 		
 	}
 	function set_estado($estado){
