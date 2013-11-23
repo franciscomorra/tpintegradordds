@@ -18,11 +18,11 @@ class Banda {
 					b.`id` = \"".$this->id."\"
 					AND g.id = b.genero
 				";
-			$datosConsulta = Database::getInstance()->consultaSelect($queryString)[0];
-			$this->nombre = $datosConsulta["nombre"];
+			$datosConsulta = Database::getInstance()->consultaSelect($queryString);
+			$this->nombre = $datosConsulta[0]["nombre"];
 			$this->genero = new Genero($idgen);
-			$this->genero->id = $datosConsulta["id_genero"];
-			$this->genero->nombre = $datosConsulta["genero"];
+			$this->genero->id = $datosConsulta[0]["id_genero"];
+			$this->genero->nombre = $datosConsulta[0]["genero"];
 		}
 	
 	}

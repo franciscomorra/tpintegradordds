@@ -10,9 +10,9 @@ class recital {
 			WHERE
 				`festival` = '".$this->festival."'
 			AND `fecha` = '".$this->fecha."'";
-		$datosConsulta = Database::getInstance()->consultaSelect($queryString)[0];
-		$this->precioBase = $datosConsulta["precioBase"];
-		$this->horaInicio = $datosConsulta["horaInicio"];
+		$datosConsulta = Database::getInstance()->consultaSelect($queryString);
+		$this->precioBase = $datosConsulta[0]["precioBase"];
+		$this->horaInicio = $datosConsulta[0]["horaInicio"];
 		$date = new DateTime($this->fecha); 
 		$fecha_mostrar = $date->format('d-m-Y');
 	}
