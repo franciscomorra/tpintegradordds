@@ -11,10 +11,10 @@ class AdminBandas {
 		$generosManager = new Generos_Controller();
 		if(isset($mensaje["borrar"]) && isset($mensaje["id_banda"])){
 			$banda = new Banda();
-			$banda->id = $mensaje["id_banda"];
-			$banda->delete_banda();
-		
-		}elseif (isset($mensaje["crear_banda"])){
+            $banda->id = $mensaje["id_banda"];
+            $banda->delete_banda();
+
+        }elseif (isset($mensaje["crear_banda"])){
 			//print_r($mensaje);
 			if($mensaje["nombre"]==NULL){
 				echo ("Nombre no debe ser nulo");

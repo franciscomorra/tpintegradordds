@@ -1,6 +1,6 @@
 <html>
 <body>
-<form action="" method="POST">
+<form id='fest_form' action="" method="POST">
 <?php
 include_once("bootstrap.php");
 include_once "controllers/admin_entradas_controller.php";
