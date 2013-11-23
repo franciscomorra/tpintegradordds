@@ -52,7 +52,8 @@ class Database {
 	function query($query){
 	    if ($stmt = $this->mysqli->prepare($query)) { 
 			$stmt->execute();
-			$stmt->close(); 
+            $meta = $stmt->result_metadata();
+            $stmt->close();
 		}else{
 			echo "Error en Query<br/>";
 			echo $query;

@@ -3841,16 +3841,16 @@ INSERT INTO `sectores` (`nombre`, `color`, `cantidad_filas`, `cantidad_columnas`
 --
 -- Filtros para la tabla `bandas`
 --
-ALTER TABLE `bandas`
-  ADD CONSTRAINT `bandas_ibfk_1` FOREIGN KEY (`genero`) REFERENCES `generos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE `bandas`
+--  ADD CONSTRAINT `bandas_ibfk_1` FOREIGN KEY (`genero`) REFERENCES `generos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `bandas_recitales`
 --
-ALTER TABLE `bandas_recitales`
-  ADD CONSTRAINT `bandas_recitales_ibfk_1` FOREIGN KEY (`festival`) REFERENCES `recitales` (`festival`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `bandas_recitales_ibfk_2` FOREIGN KEY (`id_banda`) REFERENCES `bandas` (`id_banda`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `bandas_recitales_ibfk_3` FOREIGN KEY (`fecha_recital`) REFERENCES `recitales` (`fecha`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE `bandas_recitales`
+--  ADD CONSTRAINT `bandas_recitales_ibfk_1` FOREIGN KEY (`festival`) REFERENCES `recitales` (`festival`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+--  ADD CONSTRAINT `bandas_recitales_ibfk_2` FOREIGN KEY (`id_banda`) REFERENCES `bandas` (`id_banda`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+--  ADD CONSTRAINT `bandas_recitales_ibfk_3` FOREIGN KEY (`fecha_recital`) REFERENCES `recitales` (`fecha`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `entradas`

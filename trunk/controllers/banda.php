@@ -8,7 +8,7 @@ class Banda {
 
 	}
 	
-	function actualizar_datos(){
+	function actualizar_datos($id, $idgen){
 		if($this->id!=NULL){
 			$this->id = $id;
 			$queryString = "
@@ -48,7 +48,7 @@ class Banda {
 	function delete_banda(){
 		$query = "
 			DELETE FROM bandas 
-			WHERE `bandas`.`id_banda` = ".$this->id;
+			WHERE id_banda = ".$this->id;
 		return Database::getInstance()->query($query);
 	}
 }

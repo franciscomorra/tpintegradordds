@@ -29,6 +29,24 @@ class recital {
 		);";
 		return Database::getInstance()->query($query);
 	}
-	
+    function quitarBanda($id_banda, $id_festival, $fecha){
+        $query = "
+		DELETE FROM bandas_recitales WHERE id_banda ='".$id_banda."' AND fecha_recital='".$fecha."' AND festival='".$id_festival."';";
+
+        return Database::getInstance()->query($query);
+    }
+	public static function getBandas($fecha,$festival){
+        $queryString = "
+			SELECT b.nombre nombre_banda, b.id_banda id, br.festival, br.orden, g.id id_genero, g.nombre nombre_genero
+			FROM bandas_recitales br INNER JOIN bandas b ON b.id_banda=br.id_banda INNER JOIN generos g ON b.genero=g.id
+			WHERE
+				br.`festival` = '".$festival."'
+			AND br.`fecha_recital` = '".$fecha."'
+			ORDER BY orden ASC";
+
+        $datosConsulta = Database::getInstance()->consultaSelect($queryString);
+
+        return $datosConsulta;
+    }
 }
 ?>
