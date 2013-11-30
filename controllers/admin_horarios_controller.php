@@ -29,10 +29,10 @@ class AdminHorarios {
             }
             if(isset($mensaje["borrar"])){
                 $recital ->quitarBanda($mensaje["id_banda"], $recital->festival, $recital->fecha );
-                $bandas = Recital::getBandas($mensaje["recital"],$mensaje["festival"]);
                 $orden --;
                 echo "Banda borrada!";
             }
+            $bandas = Recital::getBandas($mensaje["recital"],$mensaje["festival"]);
 
             $aExclude = array();
             foreach($bandas as $band){

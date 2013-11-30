@@ -10,6 +10,8 @@ class Festival
     /** @Column(type="string") **/
     protected $nombre;
 
+    const LIMIT = 5;
+
     /**
      * @param string $nombre
      */
